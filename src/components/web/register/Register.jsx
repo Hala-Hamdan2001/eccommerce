@@ -36,6 +36,7 @@ export default function Register() {
             userName:'',
             email:'',
             password:'',
+            image:'',
         },
         onSubmit,
         validationSchema:registerSchema,

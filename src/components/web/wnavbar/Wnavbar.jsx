@@ -7,7 +7,6 @@ import { CartContext } from '../context/Cart';
 export default function Wnavbar() {
   let {userToken,setUserToken,userData,setUserData} = useContext(UserContext);
   const {count} = useContext(CartContext);
-   console.log(count);
   let navigate = useNavigate();
   const logout = ()=>{
     localStorage.removeItem("userToken");

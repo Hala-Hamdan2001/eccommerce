@@ -263,6 +263,17 @@ footer .logo a {
 }
 
 
+.usercontact{
+    display:flex;
+    margin-bottom: 30px;
+}
+.usercontact input{
+    width: 80%;
+    margin-left: 10px;
+}
+.usercontact .phone{
+    width: 82.5%;
+}
 
 
 

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 export const CartContext = createContext(null);
 export function CartContextprovider({children}){
     let [count,setCount] = useState(0);
+
     const addToCartContext = async (productId)=>{
         try{
             const token = localStorage.getItem("userToken");
@@ -56,7 +57,47 @@ export function CartContextprovider({children}){
             console.log(error);
         }
     }
-    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount}}>
+    const increaseContext = async (productId)=>{
+        try{
+            const token = localStorage.getItem("userToken");
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/incraseQuantity`,{productId},
+            {headers:{Authorization:`Tariq__${token}`}
+        })
+        return data;
+        }
+        catch(error){
+            console.log("error");
+            console.log(error);
+        }
+    }
+    const decreaseContext = async (productId)=>{
+        try{
+            const token = localStorage.getItem("userToken");
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/decraseQuantity`,{productId},
+            {headers:{Authorization:`Tariq__${token}`}
+        })
+        return data;
+        }
+        catch(error){
+            console.log("error");
+            console.log(error);
+        }
+    }
+    const clearCartContext = async (productId)=>{
+        try{
+            const token = localStorage.getItem("userToken");
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/clear`,{productId},
+            {headers:{Authorization:`Tariq__${token}`}
+        })
+        return data;
+        }
+        catch(error){
+            console.log("error");
+            console.log(error);
+        }
+    }
+
+    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,clearCartContext,increaseContext,decreaseContext,count,setCount}}>
         {children}
     </CartContext.Provider>;
 }

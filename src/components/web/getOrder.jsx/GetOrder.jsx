@@ -11,8 +11,6 @@ export default function GetOrder() {
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/order`, {
                 headers: { Authorization: `Tariq__${token}` }
             });
-
-            console.log(response.data);
             setgetorder(response.data.orders);
         } catch (error) {
             console.error("Error fetching user orders:", error);
@@ -28,24 +26,13 @@ export default function GetOrder() {
                 getorder.map((order) => (
                     <div className="item" key={order._id} >
                         <h1>Order</h1>
-                        {getorder.length>0?(order.products.map((product) => (
-                        <div  key={product._id} >
-                            <h2>Item</h2>
-                            <div >
-                               <span>Product Quantity: {product.quantity }</span>
-                            </div>
-
-                            <div className="price">Unit Price: ${product.unitPrice}</div> 
-
-                            <div className="subtotal" >Final Price: ${product.finalPrice}</div>
-                        </div>   
-                         
-                    ))):"no items"}
-                    <div className="subtotal">
-                        <h3>Order Final Price: </h3>
-                         ${order.finalPrice}
+                    <div className="subtotal">Order Final Price: ${order.finalPrice}
                     </div>
-                   
+                    <div>status: {order.status}</div>
+                    <div>address: {order.address}</div>
+                    <div>created At: {order.createdAt}</div>
+                    <div>payment Type: {order.paymentType} </div>
+                    <div>phone Number: {order.phoneNumber} </div>
                   </div>
                 ))
             ) : (

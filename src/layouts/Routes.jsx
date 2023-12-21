@@ -18,6 +18,7 @@ import Userinfo from "../components/web/profile/Userinfo";
 import Usercontact from "../components/web/profile/Usercontact";
 import CreateOrder from "../components/web/createorder/CreateOrder";
 import GetOrder from "../components/web/getOrder.jsx/GetOrder";
+import GetAll from "../components/web/getall/GetAll";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "products/category/:categoryId",
         element: <CategoryDetails/>,
+      },
+      {
+        path: "getall",
+        element: <GetAll/>
       },
       {
         path: "product/:productId",

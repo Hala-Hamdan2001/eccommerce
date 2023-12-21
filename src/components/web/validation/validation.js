@@ -23,5 +23,13 @@ export const createOrderSchema = yup.object({
     .integer("A phone number can't include a decimal point")
     .min(8)
     .required('A phone number is required'),
-    coupon:yup.string().required("coupon is required").min(3,"must be at least 3 char").max(30,"max is 30 char"),
+    coupon:yup.string().min(3,"must be at least 3 char").max(30,"max is 30 char"),
+})
+export const createReviewSchema = yup.object({
+    rating: yup.number().typeError("That doesn't look like a rating")
+    .positive("the rating can't start with a minus")
+    .min(1)
+    .max(5)
+    .required('the rating is required'),
+    comment:yup.string().required("please add comment").min(3,"must be at least 3 char").max(30,"max is 30 char")
 })

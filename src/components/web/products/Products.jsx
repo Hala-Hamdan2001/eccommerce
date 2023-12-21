@@ -29,11 +29,9 @@ export default function Products() {
 
     let {userToken,setUserToken} = useContext(UserContext);
     
-    const onSubmit = async (productId) =>{
+    const onSubmit = async () =>{
         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/products/${productId}/review`,
         {headers:{Authorization:`Tariq__${userToken}`}});
-        console.log(productId);
-        console.log(userToken);
         if(data.message=='success'){
             console.log(data.order);
             toast.success('comment added successfully',{

@@ -29,8 +29,8 @@ export default function Products() {
 
     let {userToken,setUserToken} = useContext(UserContext);
     
-    const onSubmit = async () =>{
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/products/${productId}/review`,
+    const onSubmit = async users=>{
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/products/${productId}/review`,users,
         {headers:{Authorization:`Tariq__${userToken}`}});
         if(data.message=='success'){
             console.log(data.order);
